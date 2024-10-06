@@ -6,18 +6,17 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class SearchFilterPipe implements PipeTransform {
 
-  transform(items: string[], searchText: string): unknown {
-    if (!items) {
-      return [];
-    }
-    if (!searchText) {
-      return items;
-    }
-    searchText = searchText.toLocaleLowerCase();
+  transform(person: any[], searchText: string): string[] {
+    if (!person) return [];
+    if (!searchText) return [];
+    if (searchText == "") return person;
 
-    return items.filter(it => {
-      return it.toLocaleLowerCase().includes(searchText);
+    searchText = searchText.toLowerCase();
+
+    return person.filter(it => {
+      return it.toString().toLowerCase().includes(searchText);
     });
+
   }
 
 }

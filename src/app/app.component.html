@@ -26,8 +26,13 @@
 <button (click)="updateName()">Update Name</button>
 
 <br>
-<input type="text" #name>
+<br>
+
+
+<input type="search" placeholder="search" [(ngModel)]="searchText">
+
 <ul>
-  <li>
+  <li *ngFor="let person of people | searchFilter:searchText">
+    {{person}}
   </li>
 </ul>
